@@ -1,6 +1,8 @@
-window.onbeforeunload = function () {
-  let favouritesBlank = []
+window.onload = function () {
+  if (localStorage.getItem("Favourites") == null) {
+    let favouritesBlank = []
   localStorage.setItem("Favourites", JSON.stringify(favouritesBlank))
+  }
 };
 
 // random recipe
