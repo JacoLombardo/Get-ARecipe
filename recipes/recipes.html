@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="style-recipes.css">
+    <link rel="icon" type="image/x-icon" href="Images/watermelon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: green;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html" style="color: white">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="recipes.html" style="color: white">Recipes <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../favourites/favourites.html" style="color: white">Favourites</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <div class="resetDiv"><button onclick="resetFavourites()" class="buttonFav" style="background-color: green;"><p style="color: white;">Reset Favourites</p></button></div>
+
+    <div class="container mt-4" >
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9">
+                <div class="card p-4 mt-3">
+                    <h3 class="heading mt-5 text-center">How would you like to search for your recipe?</h3>
+                    <div class="d-flex justify-content-center px-5" style="background-color: rgba(0, 0, 0, 0);">
+                        <div id="tooltip1"><img src="../Images/info.png" width="20">
+                            <span class="tooltiptext">Write the name (or a part of the name) of the recipe you are looking for.</span>
+                        </div>
+                        <div id="tooltip2"><img src="../Images/info.png" width="20">
+                            <span class="tooltiptext">Write up to three ingredients that you would like to use in your recipe.</span>
+                        </div>
+                        <div id="tooltip3"><img src="../Images/info.png" width="20">
+                            <span class="tooltiptext">Write the maximum amount of calories the recipe can have.</span>
+                        </div>
+                        <div id="tooltip4"><img src="../Images/info.png" width="20">
+                            <span class="tooltiptext">Write the type of cuisine of which you would like your recipe to be.</span>
+                        </div>
+                        <div class="search" id="by-name"> <input type="text" class="search-input" id="by-name-search" placeholder="Search by name..." name=""> 
+                            <a href="#" onclick="filterByName(); return false;" class="search-icon"> <i class="fa fa-search"></i> </a> </div>
+                        <div class="search" id="by-ingredients"> <input type="text" class="search-input" id="by-ingredients-search" placeholder="Search by ingredients..." name=""> <a href="#" onclick="fetchByIngredients(); return false;"
+                                class="search-icon"> <i class="fa fa-search"></i> </a> </div>
+                        <div class="search" id="by-calories"> <input type="text" class="search-input" id="by-calories-search" placeholder="Search by calories..." name=""> <a href="#" onclick="fetchByCalories(); return false;"class="search-icon"> <i class="fa fa-search"></i> </a> </div>
+                        <div class="search" id="by-cuisine"> <input type="text" class="search-input" id="by-cuisine-search" placeholder="Search by cuisine..." name=""> <a href="#" onclick="fetchByCuisine(); return false;"
+                                class="search-icon"> <i class="fa fa-search"></i> </a> </div>
+                    </div>
+                    <div class="row mt-4 g-1 px-4 mb-5 justify-content-space-between align-items-baseline background-color: rgba(0, 0, 0, 0);">
+                        <div class="col-md-2" style="background-color: rgba(0, 0, 0, 0);">
+                            <div onclick="byName()" class="card-inner p-3 d-flex flex-column align-items-center" style="background-color: rgba(0, 0, 0, 0);"> <img
+                                    src="../Images/recipe-book.png" width="50">
+                                <div class="text-center mg-text"> <span class="mg-text">By name</span> </div>
+                                <div id="name-icon" class="class"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="background-color: rgba(0, 0, 0, 0);">
+                            <div onclick="byIngredients()" class="card-inner p-3 d-flex flex-column align-items-center" style="background-color: rgba(0, 0, 0, 0);"> <img
+                                    src="../Images/ingredients.png" width="50">
+                                <div class="text-center mg-text"> <span class="mg-text">By ingredients</span> </div>
+                                <div id="ingredients-icon"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="background-color: rgba(0, 0, 0, 0);">
+                            <div onclick="byCalories()" class="card-inner p-3 d-flex flex-column align-items-center" style="background-color: rgba(0, 0, 0, 0);"> <img
+                                    src="../Images/calories.png" width="50">
+                                <div class="text-center mg-text"> <span class="mg-text">By calories</span> </div>
+                                <div id="calories-icon"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="background-color: rgba(0, 0, 0, 0);">
+                            <div onclick="byCuisine()" class="card-inner p-3 d-flex flex-column align-items-center" style="background-color: rgba(0, 0, 0, 0);"> <img
+                                    src="../Images/cuisine.png" width="50">
+                                <div class="text-center mg-text"> <span class="mg-text">By cuisine</span> </div>
+                                <div id="cuisine-icon"></div>
+                            </div>
+                        </div>
+                        <div class="diet" style="background-color: rgba(0, 0, 0, 0);">
+                            <div class="d-flex flex-column align-items-center"> <img
+                                    src="../Images/diet.png" width="50">
+                                <div class="text-center mg-text"> <span class="mg-text">By diet</span> </div>
+                            </div>
+                            <div></div>
+                            <div>
+                                <div>
+                                    <input class="diets" type="radio" id="Omnivore" name="drone" value="omnivore" checked>
+                                    <label for="Omnivore">Omnivore</label>
+                                </div>
+                                
+                                <div>
+                                    <input class="diets" type="radio" id="Vegetarian" name="drone" value="vegetarian">
+                                    <label for="Vegetarian">Vegetarian</label>
+                                </div>
+                                
+                                <div>
+                                    <input  class="diets"type="radio" id="Vegan" name="drone" value="vegan">
+                                    <label for="Vegan">Vegan</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="gluten-free" name="drone" value="glutenFree">
+                                    <label for="Gluten-free">Gluten-free</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="dairy-free" name="drone" value="dairyFree">
+                                    <label for="Dairy-free">Dairy-free</label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <div id="dataT"></div>
+
+    <br><br><br><br><br>
+    
+    <footer class="bg-light text-center text-white">
+        <div class="container p-4 pb-0">
+            <section class="mb-4">
+                <a class="btn text-white btn-floating m-1" style="background-color: #ac2bac;" href="#!" role="button"><i
+                        class="fa fa-instagram"></i></a>
+    
+                <a class="btn text-white btn-floating m-1" style="background-color: #0082ca;" href="#!" role="button"><i
+                        class="fa fa-linkedin"></i></a>
+    
+                <a class="btn text-white btn-floating m-1" style="background-color: #333333;" href="#!" role="button"><i
+                        class="fa fa-github"></i></a>
+            </section>
+        </div>
+    
+        <div class="text-center p-3" style="background-color: green">
+            <a>© 2020 Copyright: Get A Recipe Inc.</a>
+        </div>
+    </footer>
+
+    <script src="../keys.js"></script>
+    <script src="../data/data.js"></script>
+    <script src="recipes.js"></script>
+    <script src="../instructions/instructions.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

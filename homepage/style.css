@@ -1,0 +1,109 @@
+body{
+    background-image: url(../Images/Marble.jpg);
+    background-size: 100%;
+}
+
+/* Collapse text */
+.btnS {
+    float: right;
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.btnS:focus {
+    outline: none;
+}
+
+.btnS:after {
+    content: "Less";
+    float: right;
+    margin-left: 3px;
+}
+
+.btnS.collapsed:after {
+    content: "More";
+}
+
+/* h1 */
+
+#welcome-on{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#get-a-recipe{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+p{
+    font-weight: 500;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* random recipe button */
+
+div.card.p-4.mt-3 {
+    background-color: lightgreen;
+    display: grid;
+    grid-template-columns: 100px 30px auto 30px 100px;
+    align-items: center;
+}
+
+div.card.p-4.mt-3:hover {
+    filter: none;
+}
+
+button:hover{
+    filter: brightness(110%)
+
+}
+
+
+/* footer */
+
+h1 {
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+.card-title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.card:hover {
+    filter: brightness(110%)
+}
+
+div.card.p-4.mt-3 {
+    background-color: lightgreen;
+
+}
+
+/* cards */
+
+.favourite-icon {
+    width: 20px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
