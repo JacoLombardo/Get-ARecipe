@@ -1,3 +1,8 @@
+window.onbeforeunload = function () {
+  let favouritesBlank = []
+  localStorage.setItem("Favourites", JSON.stringify(favouritesBlank))
+};
+
 // random recipe
 
 let randomButton = document.getElementById("random-button");
