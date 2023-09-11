@@ -9,7 +9,8 @@
 <li>Favourites, personal page that shows the user's favourites.</li></p>
 
 <h2>Features</h2>
-<p>There is no registration feature. The user is able to navigate throughout the site, select several filters to receive a specific combination of recipes and adding recipes to favourites using the browser localStorage.</p>
+<p>A user is able to navigate throughout the site, select several filters to receive a specific combination of recipes.</p>
+<p>A user is able to add recipes to favourites using the browser localStorage.</p>
 
 <h2>Technology used</h2>
   <div style="display: flex, flex-direction: row">
